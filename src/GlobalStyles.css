@@ -1,0 +1,36 @@
+body{
+    -webkit-font-smoothing: antialiased;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    top: 13em;
+    width: fit-content;
+    height: fit-content;
+}
+
+.carousel-control-next span, .carousel-control-prev span {
+    background-image: url("/src/assets/img/NextIcon.png") !important;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.carousel-control-prev span{
+    background-image: url("/src/assets/img/PrevIcon.png") !important;
+}
+.carousel-indicators {
+    bottom: -4em;
+}
+.carousel-indicators [data-bs-target] {
+    width: 15px;
+    height: 15px;
+    background-color: #D3D3D3;
+}
+.carousel-indicators .active {
+    width: 40px;
+    height: 12px;
+    background-color: #D16FFF;
+    border-radius: 6px;
+    border: 0 !important;
+    opacity: 1 !important;
+}
