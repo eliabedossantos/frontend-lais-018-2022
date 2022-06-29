@@ -11,3 +11,8 @@ export const SubTitle = styled.h2`
     text-align: ${props => props.textAlign ? props.textAlign : "center"};
     color: #2F2E41;
 `;
+
+export const Label = styled.label`
+    font-size: ${props => props.fontSize ? props.fontSize : ".8rem"};
+    color: #2F2E41;
+`;
