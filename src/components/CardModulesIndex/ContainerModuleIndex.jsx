@@ -19,3 +19,4 @@ export const CardModuleIndex = styled.div`
         border-radius: 20px
     }
 `;
+

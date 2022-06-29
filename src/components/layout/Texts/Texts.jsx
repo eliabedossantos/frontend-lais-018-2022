@@ -9,10 +9,10 @@ export const TitleGreen = styled.h1`
 export const SubTitle = styled.h2`
     font-size: ${props => props.fontSize ? props.fontSize : "1.5rem"};
     text-align: ${props => props.textAlign ? props.textAlign : "center"};
-    color: #2F2E41;
+    color: ${props => props.textColor ? props.textColor : "#2f2e41"};
 `;
 
-export const Label = styled.label`
-    font-size: ${props => props.fontSize ? props.fontSize : ".8rem"};
-    color: #2F2E41;
+export const Label = styled.span`
+    font-size: ${props => props.fontSize ? props.fontSize : ".9rem"};
+    color: ${props => props.textColor ? props.textColor : '#2f2e41'};
 `;
