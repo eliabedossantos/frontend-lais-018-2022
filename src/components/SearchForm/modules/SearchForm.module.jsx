@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const SearchBox = styled.div`
-    display: flex;
     background: rgba(209, 111, 255, 0.1);
     border-radius: 20px;
     padding: .1em;
     width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: 40px;
     overflow: hidden;
     flex-wrap: nowrap;
 `;

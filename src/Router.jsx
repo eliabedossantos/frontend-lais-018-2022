@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import { About } from "./pages/about/About";
 import { Contact } from "./pages/contact/Contact";
-import { Courses } from "./pages/Courses/Courses";
+import { Courses } from "./pages/courses/Courses";
 import { Home } from "./pages/home/Home";
-import { Login } from "./pages/Login/Login";
-import { Partners } from "./pages/Partners/Partners";
+import { Login } from "./pages/login/Login";
+import { Partners } from "./pages/partners/Partners";
 import { Transparency } from "./pages/transparency/Transparency";
 
 export function Router(){
