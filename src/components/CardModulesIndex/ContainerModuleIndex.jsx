@@ -12,6 +12,7 @@ export const CardModuleIndex = styled.div`
     padding: 1rem;
     border-radius: 20px;
 
+
     img {
         width: 120px;
         height: 120px;
