@@ -44,8 +44,8 @@ export function NavTop(){
                         <Nav.Item as="li" className="d-flex align-items-center mr-2"> 
                             <ButtonRounded
                                 to="/login"
-                                BtnColor="#D16FFF"
-                                bgColor="transparent">Entrar</ButtonRounded> 
+                                btncolor="#D16FFF"
+                                bgcolor="transparent">Entrar</ButtonRounded> 
                         </Nav.Item>
                         <Nav.Item as="li" className="d-flex align-items-center"> 
                             <ButtonRounded

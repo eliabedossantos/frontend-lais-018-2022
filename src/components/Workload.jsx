@@ -6,7 +6,7 @@ export function TotalHour(props){
         <span className="d-flex align-items-center gap-2">
             <ClockIcon />
             <Label>
-                {props.TotalHour}
+                {props.workload}
             </Label>
         </span>
     );

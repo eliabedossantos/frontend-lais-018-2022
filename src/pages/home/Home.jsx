@@ -1,7 +1,10 @@
 import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
 import { TitleGreen } from '../../components/layout/Texts/Texts';
-import { MostPopular } from '../../components/MostPopular/MostPopular';
+import { MostPopular } from '../../components/CardsModulesIndex/MostPopular';
 import { VitrineCourses } from '../../components/VitrineCourses/VitrineCourses';
+import { WellRated } from '../../components/CardsModulesIndex/WellRated';
+import { LastModules } from '../../components/CardsModulesIndex/LastModules';
+import { ButtonRounded } from '../../components/layout/Buttons/ButtonRounded.styled';
 export function Home(){
     return(
         <main>
@@ -13,17 +16,24 @@ export function Home(){
                 <Container>
                     <Row>
                         <Col>
-                            <Tabs defaultActiveKey="profile" id="tabModules" className="mb-3">
-                                <Tab eventKey="home" title="Mais populares">
+                            <Tabs defaultActiveKey="popular" id="tabModules" className="mb-3">
+                                <Tab eventKey="popular" title="Mais populares">
                                     <MostPopular />
                                 </Tab>
-                                <Tab eventKey="profile" title="Mais bem avaliados">
-                                <h1>teste Profile</h1>
+                                <Tab eventKey="WellRated" title="Mais bem avaliados">
+                                    <WellRated />
                                 </Tab>
-                                <Tab eventKey="contact" title="Mais recentes">
-                                    <h1>teste contact</h1>
+                                <Tab eventKey="LastModules" title="Mais recentes">
+                                    <LastModules />
                                 </Tab>
                             </Tabs>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="d-flex justify-content-center">
+                            <ButtonRounded 
+                            to="/courses"
+                            btnwidth="15em">Ver mais</ButtonRounded>
                         </Col>
                     </Row>
                 </Container>

@@ -15,4 +15,5 @@ export const SubTitle = styled.h2`
 export const Label = styled.span`
     font-size: ${props => props.fontSize ? props.fontSize : ".9rem"};
     color: ${props => props.textColor ? props.textColor : '#2f2e41'};
+
 `;

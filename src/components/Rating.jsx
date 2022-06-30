@@ -10,7 +10,7 @@ export function Rating(props){
             <FullStar />
             <FullStar />
             <Label>
-                {props.TotalRating}
+                {props.rating}
             </Label>
         </div>
     );

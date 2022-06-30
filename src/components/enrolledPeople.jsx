@@ -6,7 +6,7 @@ export function TotalPeople(props){
         <span className="d-flex align-items-center gap-2">
             <PeopleIcon />
             <Label>
-                {props.TotalPeople}
+                {props.enrolledPeople}
             </Label>
         </span>
     );
