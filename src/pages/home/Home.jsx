@@ -5,6 +5,7 @@ import { VitrineCourses } from '../../components/VitrineCourses/VitrineCourses';
 import { WellRated } from '../../components/CardsModulesIndex/WellRated';
 import { LastModules } from '../../components/CardsModulesIndex/LastModules';
 import { ButtonRounded } from '../../components/layout/Buttons/ButtonRounded.styled';
+import { PartnersIndex } from '../../components/partnersIndex/PartnersIndex';
 export function Home(){
     return(
         <main>
@@ -37,6 +38,7 @@ export function Home(){
                         </Col>
                     </Row>
                 </Container>
+                <PartnersIndex />
             </section>
         </main>
     );

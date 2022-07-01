@@ -11,6 +11,7 @@ export const CardModuleIndex = styled.div`
     background-color: #F5F5F7;
     padding: 1rem;
     border-radius: 20px;
+    flex-wrap: wrap;
 
 
     img {
@@ -18,6 +19,10 @@ export const CardModuleIndex = styled.div`
         height: 120px;
         object-fit: cover;
         border-radius: 20px
+    }
+
+    @media (max-width: 768px) {
+        justify-content: center;
     }
 `;
 

@@ -26,7 +26,7 @@ export function NavTop(){
                             <Link 
                             className={`nav-link ${styles.LinkMenu}`}  to="/about">Sobre Nós</Link>
                         </Nav.Item>
-                        <Nav.Item as="li"> 
+                        <Nav.Item as="li">  
                             <Link 
                             className={`nav-link ${styles.LinkMenu}`}  to="/courses">Cursos</Link> 
                         </Nav.Item>
