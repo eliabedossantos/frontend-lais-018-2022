@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { About } from "./pages/about/About";
 import { Contact } from "./pages/contact/Contact";
-import { Courses } from "./pages/courses/Courses";
+import { EducModules } from "./pages/educModules/EducModules";
 import { Home } from "./pages/home/Home";
 import { Login } from "./pages/login/Login";
 import { Partners } from "./pages/partners/Partners";
@@ -12,7 +12,7 @@ export function Router(){
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/courses" element={<Courses />} />
+            <Route path="/courses" element={<EducModules />} />
             <Route path="/partners" element={<Partners />} />
             <Route path="/transparency" element={<Transparency />} />
             <Route path="/contact" element={<Contact />} />

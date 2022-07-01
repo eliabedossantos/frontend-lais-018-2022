@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const TitleContainer = styled.div`
+    width: 30%;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+`;
 export const CardModuleIndex = styled.div`
     display: flex;
     justify-content: space-between;
@@ -23,6 +30,11 @@ export const CardModuleIndex = styled.div`
 
     @media (max-width: 768px) {
         justify-content: center;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
     }
 `;
 

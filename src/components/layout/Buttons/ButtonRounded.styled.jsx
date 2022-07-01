@@ -6,7 +6,7 @@ export const ButtonRounded = styled(Link)`
     color: ${props => props.btncolor ? props.btncolor : '#fff'};
     width: ${props => props.btnwidth ? props.btnwidth : '8em'};
     height: ${props => props.btnheight ? props.btnheight : '2em'};
-    border: 1px solid #D16FFF;
+    border: ${props => props.btnborder ? props.btnborder : '1px solid #D16FFF'};
     border-radius: 20px;
     display: flex;
     align-items: center;
