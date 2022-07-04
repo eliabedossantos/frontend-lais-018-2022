@@ -1,6 +1,12 @@
 import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import { Label, TitleGreen } from "../../components/layout/Texts/Texts";
-import { Covid } from "../../components/ModulesInternal/Covid";
+import { Covid } from "../../components/ModulesPage/Covid";
+import { Opas } from "../../components/ModulesPage/Opas";
+import { Preceptoria } from "../../components/ModulesPage/Preceptoria";
+import { PrisonSystem } from "../../components/ModulesPage/PrisonSystem";
+import { RareDeseases } from "../../components/ModulesPage/RareDeseases";
+import { Syphilis } from "../../components/ModulesPage/Syphilis";
+import { WebTalks } from "../../components/ModulesPage/WebTalks";
 
 export function EducModules(){
     return(
@@ -22,22 +28,22 @@ export function EducModules(){
                            <Covid />
                         </Tab>
                         <Tab eventKey="sifilis" title="Sífilis e outras Ist's">
-                            <h1>teste</h1>
+                            <Syphilis />
                         </Tab>
                         <Tab eventKey="preceptoria" title="Preceptoria">
-                           <h1>teste</h1>
+                           <Preceptoria />
                         </Tab>
                         <Tab eventKey="raras" title="Doenças Raras">
-                           <h1>teste</h1>
+                           <RareDeseases />
                         </Tab>
                         <Tab eventKey="webPalestras" title="Web Palestras">
-                           <h1>teste</h1>
+                           <WebTalks />
                         </Tab>
                         <Tab eventKey="prisional" title="Sistema prisional">
-                           <h1>teste</h1>
+                          <PrisonSystem />
                         </Tab>
                         <Tab eventKey="opas" title="OPAS">
-                           <h1>teste</h1>
+                           <Opas />
                         </Tab>
                     </Tabs>
                 </Col>

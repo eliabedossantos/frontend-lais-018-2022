@@ -4,6 +4,7 @@ import { Contact } from "./pages/contact/Contact";
 import { EducModules } from "./pages/educModules/EducModules";
 import { Home } from "./pages/home/Home";
 import { Login } from "./pages/login/Login";
+import { ModuleCourse } from "./pages/module/ModuleCourse";
 import { Partners } from "./pages/partners/Partners";
 import { Transparency } from "./pages/transparency/Transparency";
 
@@ -17,6 +18,8 @@ export function Router(){
             <Route path="/transparency" element={<Transparency />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/module" element={<ModuleCourse />} />
+            <Route path="/module/:id" element={<ModuleCourse />} />
         </Routes>
     );
 }

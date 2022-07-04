@@ -2,7 +2,8 @@ import { Container, Row } from "react-bootstrap";
 import { Label } from "../layout/Texts/Texts";
 import { ItemTemplate } from "./ItemTemplate";
 import sifilisImg from "../../assets/img/sifilis.png"
-export function Covid(){
+
+export function Preceptoria(){
     return(
         <Container>
             <Row className="mb-4">

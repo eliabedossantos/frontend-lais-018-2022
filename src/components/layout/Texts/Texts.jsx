@@ -10,6 +10,7 @@ export const SubTitle = styled.h2`
     font-size: ${props => props.fontSize ? props.fontSize : "1.5rem"};
     text-align: ${props => props.textAlign ? props.textAlign : "center"};
     color: ${props => props.textColor ? props.textColor : "#2f2e41"};
+    font-weight: 600;
 `;
 
 export const Label = styled.span`

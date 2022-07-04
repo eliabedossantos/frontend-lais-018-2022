@@ -4,7 +4,7 @@ import { ButtonRounded } from "../layout/Buttons/ButtonRounded.styled";
 import { Label, SubTitle } from "../layout/Texts/Texts";
 import { Rating } from "../Rating";
 import { TotalHour } from "../Workload";
-import { TotalPeople } from "../enrolledPeople";
+import { TotalPeople } from "../EnrolledPeople";
 
 export function CardModuleTemplate(props){
     return(
