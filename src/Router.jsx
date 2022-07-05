@@ -19,7 +19,7 @@ export function Router(){
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/module" element={<ModuleCourse />} />
-            <Route path="/module/:id" element={<ModuleCourse />} />
+            <Route path="/module/*" element={<ModuleCourse />} />
         </Routes>
     );
 }

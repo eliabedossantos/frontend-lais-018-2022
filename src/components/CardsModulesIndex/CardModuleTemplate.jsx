@@ -6,6 +6,7 @@ import { Rating } from "../Rating";
 import { TotalHour } from "../Workload";
 import { TotalPeople } from "../EnrolledPeople";
 
+
 export function CardModuleTemplate(props){
     return(
         <div className="w-100 py-3">

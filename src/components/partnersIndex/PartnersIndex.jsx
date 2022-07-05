@@ -29,7 +29,7 @@ export function PartnersIndex() {
                             data?.map(item => {
                                 return(
                                     <ContainerPartners  key={item.id}>
-                                        <img src={item.capa} alt="" className="mw-100 w-100 h-auto" />
+                                        <img src={item.capa} alt={item.titulo} className="mw-100 w-100 h-auto" />
                                         <Label textColor="#000">
                                             {item.titulo}
                                         </Label>
