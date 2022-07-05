@@ -16,7 +16,7 @@ export function CardModuleTemplate(props){
                     fontSize="1.2rem" textAlign="left">
                         {props.titleModule}
                     </SubTitle>
-                    <Label textColor="#7dc143">
+                    <Label textAlign="start" textColor="#7dc143">
                         {props.labelInstitution}
                     </Label>
                 </TitleContainer>

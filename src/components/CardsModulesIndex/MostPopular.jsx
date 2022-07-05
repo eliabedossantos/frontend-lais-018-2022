@@ -1,6 +1,7 @@
 import { CardModuleTemplate } from "./CardModuleTemplate";
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import { Loading } from "../Loading";
 
 export function MostPopular(){
     const {data, isFetching} = useQuery('mostPopular', async () => {
@@ -9,6 +10,7 @@ export function MostPopular(){
     });
     return(
         <>
+            {isFetching && <Loading /> }
             {data?.map(item => {
                 return(
                     <CardModuleTemplate 

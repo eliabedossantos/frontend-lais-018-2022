@@ -1,6 +1,7 @@
 import { CardModuleTemplate } from "./CardModuleTemplate";
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import { Loading } from "../Loading";
 
 
 export function WellRated(){
@@ -10,6 +11,7 @@ export function WellRated(){
     });
     return(
         <>
+            {isFetching && <Loading /> }
             {data?.map(item => {
                 return(
                     <CardModuleTemplate 
@@ -27,3 +29,4 @@ export function WellRated(){
         </>
     );
 }
+

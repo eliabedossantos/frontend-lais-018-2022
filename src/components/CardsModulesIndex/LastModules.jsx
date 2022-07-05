@@ -1,6 +1,7 @@
 import { CardModuleTemplate } from "./CardModuleTemplate";
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import { Loading } from "../Loading";
 
 export function LastModules(){
     const {data, isFetching} = useQuery('lastCourses', async () => {
@@ -8,9 +9,9 @@ export function LastModules(){
         return response.data;
     });
 
-
     return(
         <>
+            {isFetching && <Loading /> }
             {data?.map(item => {
                 return(
                     <CardModuleTemplate 
