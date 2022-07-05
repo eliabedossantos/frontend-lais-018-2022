@@ -1,29 +1,30 @@
-import sifilisImg from "../../assets/img/sifilis.png"
 import { CardModuleTemplate } from "./CardModuleTemplate";
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
 export function LastModules(){
-
-    const {data, isFetching} = useQuery('courses', async () => {
-        const response = await axios.get('http://localhost:3004/cursos')
+    const {data, isFetching} = useQuery('lastCourses', async () => {
+        const response = await axios.get('http://localhost:3004/cursos?_sort=criado_em&_order=desc&_start=0&_end=3')
         return response.data;
     });
 
+
     return(
-        { isFetching && <div>Loading...</div> }
-        {data?.map((item, index) => {
-            return(
-                <CardModuleTemplate 
-                sourceImg={sifilisImg}
-                titleModule="Sífilis: Aspectos Clínicos e Diagnóstico Diferencial"
-                labelInstitution="LAIS / EBSERH"
-                totalPeople={"27.645"}
-                totalHour={"4h30min"}
-                rating={"5,0"}
-                openModule={"/"}
-                />
-            )
-        })}
+        <>
+            {data?.map(item => {
+                return(
+                    <CardModuleTemplate 
+                    sourceImg={item.capa}
+                    titleModule={item.titulo}
+                    labelInstitution={item.parceiros}
+                    totalPeople={item.matriculados}
+                    totalHour={item.duracao}
+                    rating={item.avaliacao}
+                    openModule={"/"}
+                    key={item.id}
+                    />
+                )
+            })} 
+        </>
     )
 }
