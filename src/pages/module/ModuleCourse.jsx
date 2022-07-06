@@ -8,13 +8,13 @@ import { CalendarIcon } from "../../components/Svgs/Calendar";
 import { TotalPeople } from "../../components/EnrolledPeople";
 import { Rating } from "../../components/Rating";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useQueryClient } from "react-query";
+import { useQuery} from "react-query";
+import axios from 'axios';
 import { Loading } from "../../components/Loading";
 
 const TitleContainer = styled.div`
     width: 100%;
-    padding: 1rem 0 3rem 0; 
+    padding: 2rem 0 4rem 0; 
     background-image: url(${props => props.backgroundImage});
     background-size: cover;
     background-position: center;
@@ -24,27 +24,25 @@ const TitleContainer = styled.div`
 `;
 
 
-export function ModuleCourse(){
+export function ModuleContent(){
     const params = useParams();
     const slugModule = params['*'];
     const currentModule = slugModule.split('-mod=')[1];
-    
-    const {data, isLoading} = useQueryClient('moduleCurrent', async () => {
+    const {data, isLoading} = useQuery('moduleCurrent', async () => {
         const response = await axios.get(`http://localhost:3004/cursos?id=${currentModule}`)
         return response.data;
-    },{
-        staleTime: 1000 * 60, // 1 minute
     })
-
     return(
-        <section>
+        <>
             {isLoading && <Loading /> }
-            {data?.map(item => {
-            <>
+            {
+            data?.map(item => {
+            return(
+                <section key="item.id">
                 <TitleContainer backgroundImage={item.capa}>
                     <Container>
                         <Row>
-                            <Col>
+                            <Col sm={12}>
                                 <Label textColor="#fff" textAlign="start" className="mb-5">
                                     Início / Cursos / Módulos / {item.titulo}
                                 </Label>
@@ -60,7 +58,7 @@ export function ModuleCourse(){
                 </TitleContainer>
                 <Container className="py-4">
                     <Row>
-                        <Col>
+                        <Col sm={12}>
                             <TitleGreen className="mb-4">
                                 Informações Gerais do Curso
                             </TitleGreen>
@@ -69,71 +67,68 @@ export function ModuleCourse(){
                     <Row className="mb-4">
                         <Col className="d-flex justify-content-between flex-wrap">
                             <strong className="d-flex gap-1 align-items-center">
-                                <TotalHour workload={item.duracao}/>
+                                <TotalHour workload={(item.duracao).replace(/h/g, "")}/>
                                 <Label>horas</Label>
                             </strong>
                             <strong className="d-flex gap-1 align-items-center">
                                 <CalendarIcon />
-                                <Label>Desde 20/03/2021</Label>
+                                <Label>Desde {item.criado_em}</Label>
                             </strong>
                             <strong className="d-flex gap-1 align-items-center">
-                                <TotalPeople enrolledPeople={"89.654"}/>
+                                <TotalPeople enrolledPeople={item.matriculados}/>
                                 <Label>alunos matriculados</Label>
                             </strong>
                             <strong className="d-flex gap-1 align-items-center">
-                            <Rating rating={"4,9"}/>
-                                <Label>(52.000 avaliações)</Label>
+                            <Rating rating={item.avaliacao}/>
+                                <Label>({item.numero_avaliacoes} avaliações)</Label>
                             </strong>
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
+                        <Col sm={12}>
                             <SubTitle textColor="#7dc143" className="mb-3">
                                 Sobre o curso
                             </SubTitle>
-                            <p>O módulo “SÍFILIS: ASPECTOS CLÍNICOS E DIAGNÓSTICO DIFERENCIAL” tem como objetivo promover uma revisão e atualização dos profissionais de saúde acerca dos conceitos essenciais para o reconhecimento da sífilis e o estabelecimento da conduta adequada. Neste módulo, revisamos os conceitos básicos relacionados aos aspectos clínicos e ao diagnóstico diferencial da sífilis, assim como as suas diversas formas de apresentação clínica. O módulo contempla ainda as apresentações clínicas incomuns, com seus potenciais de gravidade e o diagnóstico diferencial com outras patologias com quadros clínicos semelhantes. A reemergência justifica a preocupação com todas as formas de apresentação da doença, portanto, a proposta é fornecer subsídios que embasam a conduta do profissional de saúde na promoção de uma atenção integral aos pacientes com sífilis.</p>
-                            <SubTitle textColor="#7dc143" className="mb-3">
-                                Objetivos
-                            </SubTitle>
-                            <strong>Objetivo Geral</strong>
-                            <p>Promover a atualização dos profissionais de saúde acerca dos conceitos essenciais para o reconhecimento e tratamento precoce da sífilis, aspectos fundamentais ao controle da doença.</p>
-                            <strong>Objetivos Específicos</strong>
+                            <p>{item.sobre}</p>
+                            {item.objetivo_geral  &&
+                                <SubTitle textColor="#7dc143" className="mb-3">
+                                    Objetivos
+                                </SubTitle>}
+                            {item.objetivo_geral && <strong>Objetivo Geral</strong>}
+                            <p>{item.objetivo_geral}</p>
+                            {item.objetivo_especifico && <strong>Objetivos Específicos</strong>}
+                            <p>{item.objetivo_especifico}</p>
+                            {item.conteudo && <strong>Conteúdo do curso</strong>}
                             <ul>
-                                <li>
-                                    Conceituar a sífilis e descrever a sua classificação.
-                                </li>
-                                <li>
-                                    Distinguir as principais formas de apresentação da sífilis e seus diagnósticos diferenciais.
-                                </li>
-                                <li>
-                                    Reforçar aspectos anatomopatológicos das formas clínicas para melhor compreensão da doença.
-                                </li>
-                                <li>
-                                    Apresentar formas clínicas incomuns da sífilis que podem ser confundidas com outras patologias.
-                                </li>
+                                {item.conteudo.map((item, index) => {
+                                    return(
+                                        <li key={index}>{item.replace(/AULA/g, "; AULA")}</li>
+                                    )
+                                })}
                             </ul>
+                            {item.recursos_educacionais &&
                             <SubTitle textColor="#7dc143" className="mb-3">
                                 Recursos educacionais
-                            </SubTitle>
-                            <p className="text-center">Serão utilizados textos no formato de PDF, vídeos, ilustrações, infográficos, dentre outros recursos.</p>
+                            </SubTitle>}
+                            
+                            <p className="text-center">{item.recursos_educacionais}</p>
                             <SubTitle textColor="#7dc143" className="mb-3">
                                 Créditos
                             </SubTitle>
-                            <div className="d-flex justify-content-between flex-wrap gap-3">
-                                <img src={LogoSedis} alt=""/>
-                            </div>  
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <SubTitle textColor="#7dc143" className="mb-3">Comentários</SubTitle>
-                            
+                            <Row className="justify-content-center">
+                                {item.creditos.map((item, index) => {
+                                    return(
+                                        <Col sm={5} md={2} key={index} >
+                                            <img src={item.capa} alt={item.titulo} className="mw-100"/>
+                                        </Col>
+                                    );
+                                })}  
+                            </Row>  
                         </Col>
                     </Row>
                 </Container>
-            </>
-            })}
-            
-        </section>
+            </section>
+            )})}
+        </>
     );
 }

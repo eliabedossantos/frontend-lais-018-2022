@@ -10,6 +10,9 @@ import { PeopleMoneyIcon } from "../../components/Svgs/PeopleMoneyIcon";
 import graphicImg from "../../assets/img/graphic.png";
 import brazilMap from "../../assets/img/brazilMap.png";
 import { DotIcon } from "../../components/Svgs/DotIcon";
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import { Loading } from "../Loading";
 
 const DataContainer = styled.div`
     width: 100%;
@@ -22,8 +25,15 @@ const DataContainer = styled.div`
 
 
 export function Transparency(){
+    const {data, isLoading} = useQuery('transparencyData', async () => {
+        const response = await axios.get('http://localhost:3004/transparencia')
+        return response.data;
+    }, {
+        staleTime: 1000 * 60, // 1 minute
+    });
     return(
-        <Container className="py-5">
+        <>
+            <Container className="py-5">
             <Row>
                 <Col>
                     <Label textAlign="start" className="mb-3">Início <strong>/ Transparência</strong></Label>
@@ -143,6 +153,8 @@ export function Transparency(){
                     </DataContainer>
                 </Col>
             </Row>
-        </Container>
+            </Container>
+        
+        </>
     );
 }

@@ -5,7 +5,7 @@ import { Loading } from "../Loading";
 import { convertToSlug } from "../../helpers/CreateSlug";
 
 export function WellRated(){
-    const {data, isFetching} = useQuery('wellRated', async () => {
+    const {data, isLoading} = useQuery('wellRated', async () => {
         const response = await axios.get('http://localhost:3004/cursos?_sort=avaliacao&_order=desc&_start=0&_end=3')
         return response.data;
     },{
@@ -13,7 +13,7 @@ export function WellRated(){
     });
     return(
         <>
-            {isFetching && <Loading /> }
+            {isLoading && <Loading /> }
             {data?.map(item => {
                 return(
                     <CardModuleTemplate 

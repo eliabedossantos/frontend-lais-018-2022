@@ -6,7 +6,7 @@ import { convertToSlug } from "../../helpers/CreateSlug";
 
 
 export function LastModules(){
-    const {data, isFetching} = useQuery('lastCourses', async () => {
+    const {data, isLoading} = useQuery('lastCourses', async () => {
         const response = await axios.get('http://localhost:3004/cursos?_sort=criado_em&_order=desc&_start=0&_end=3')
         return response.data;
     }, {
@@ -15,7 +15,7 @@ export function LastModules(){
 
     return(
         <>
-            {isFetching && <Loading /> }
+            {isLoading && <Loading /> }
             {data?.map(item => {
                 return(
                     <CardModuleTemplate 

@@ -38,9 +38,9 @@ export function NavTop(){
                             <Link 
                             className={`nav-link ${styles.LinkMenu}`}  to="/transparency">Transparência</Link> 
                         </Nav.Item>
-                        <Nav.Item as="li"> 
+                       {/* <Nav.Item as="li"> 
                             <SearchForm />
-                        </Nav.Item>
+                        </Nav.Item> */}
                         <Nav.Item as="li" className="d-flex align-items-center mr-2"> 
                             <ButtonRounded
                                 to="/login"
