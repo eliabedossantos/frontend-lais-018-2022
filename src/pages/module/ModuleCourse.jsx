@@ -102,7 +102,7 @@ export function ModuleContent(){
                             <ul>
                                 {item.conteudo.map((item, index) => {
                                     return(
-                                        <li key={index}>{item.replace(/AULA/g, "; AULA")}</li>
+                                        <li key={index}>{item}</li>
                                     )
                                 })}
                             </ul>

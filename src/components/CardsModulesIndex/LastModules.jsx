@@ -15,8 +15,8 @@ export function LastModules(){
 
     return(
         <>
-            {isLoading && <Loading /> }
             {data?.map(item => {
+            {isLoading && <Loading /> }
                 return(
                     <CardModuleTemplate 
                     sourceImg={item.capa}

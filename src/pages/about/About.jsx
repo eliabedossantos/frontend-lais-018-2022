@@ -1,5 +1,7 @@
+import { PaginationPage } from "../../components/Pagination";
+
 export function About(){
     return(
-        <h1>About</h1>
+        <PaginationPage />
     );
 }

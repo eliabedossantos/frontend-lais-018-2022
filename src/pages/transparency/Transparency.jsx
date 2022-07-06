@@ -12,8 +12,8 @@ import brazilMap from "../../assets/img/brazilMap.png";
 import { DotIcon } from "../../components/Svgs/DotIcon";
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import { Loading } from "../Loading";
-
+import { Loading } from "../../components/Loading";
+import { useEffect } from "react";
 const DataContainer = styled.div`
     width: 100%;
     max-width: 100%;
@@ -25,12 +25,11 @@ const DataContainer = styled.div`
 
 
 export function Transparency(){
-    const {data, isLoading} = useQuery('transparencyData', async () => {
-        const response = await axios.get('http://localhost:3004/transparencia')
-        return response.data;
-    }, {
-        staleTime: 1000 * 60, // 1 minute
-    });
+    // const {data, isLoading} = useQuery('transparency', async () => {
+    //     const response = await axios.get('http://localhost:3004/transparecia')
+    //     return response.data;
+    // });
+
     return(
         <>
             <Container className="py-5">
@@ -52,14 +51,14 @@ export function Transparency(){
                                     <PeopleIcon />
                                     <strong>Total de usuários registrados</strong>
                                 </span>
-                                <SubTitle textColor="#7dc143">850.980</SubTitle>
+                                <SubTitle textColor="#7dc143">{}</SubTitle>
                             </div>
                             <div>
                                 <span className="d-flex mb-2 align-items-center justify-content-center gap-2">
                                     <SubscriptionsIcon />
                                     <strong>Inscrições realizadas</strong>
                                 </span>
-                                <SubTitle textColor="#7dc143">2.246.780</SubTitle>
+                                <SubTitle textColor="#7dc143">{}</SubTitle>
                             </div>
                             <div>
                                 <span className="d-flex mb-2 align-items-center justify-content-center gap-2"> 
