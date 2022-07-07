@@ -2,7 +2,7 @@ import { CardModuleTemplate } from "./CardModuleTemplate";
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { Loading } from "../Loading";
-import { convertToSlug } from "../../helpers/CreateSlug";
+import { convertToSlug } from "../../lib/CreateSlug";
 
 export function MostPopular(){
     const {data, isLoading} = useQuery('mostPopular', async () => {
