@@ -7,6 +7,7 @@ import { Loading } from "../../components/Loading";
 import { Chart } from "react-google-charts";
 import { useState } from "react";
 
+
 // assets
 import { Label, SubTitle, TitleGreen } from "../../components/layout/Texts/Texts";
 import { CapIcon } from "../../components/Svgs/CapIcon";
@@ -17,6 +18,7 @@ import brazilMap from "../../assets/img/brazilMap.png";
 import { DotIcon } from "../../components/Svgs/DotIcon";
 import { PeopleIcon } from "../../components/Svgs/PeopleIcon";
 import { SubscriptionsIcon } from "../../components/Svgs/SubscriptionsIcon";
+import { BrazilGraphic } from "../../lib/BrazilGraphic";
 const DataContainer = styled.div`
     width: 100%;
     max-width: 100%;
@@ -157,7 +159,7 @@ export function Transparency(){
                             Usuários por Estado
                         </SubTitle>
                         <div className="d-flex justify-content-center mb-3 ">
-                            <img  src={brazilMap} alt="" className="mw-100"/>
+                            <BrazilGraphic />
                         </div>
                         <div>
                             <span className="d-flex mb-2 align-items-center gap-2">
