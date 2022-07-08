@@ -29,16 +29,16 @@ const DataContainer = styled.div`
 `;
 
 export function Transparency(){
-    const [chartsData, setChartData] = useState({}); // here we receive the data from the API to use in the charts
     const chartUsersCourses = [["Curso", "Usuários"]]; //The Google Charts library needs the data to be structured as follows: array[[description,data description],... ], we use this array as a structure
     const chartColors = ['#F5F5F7', '#7DC143', '#D16FFF', '#2F2E41'];
-    const {data, isLoading} = useQuery('transparency', async () => { // get data
+    const {data, isLoading, isSuccess} = useQuery('transparency', async () => { // get data
         const response = await axios.get('http://localhost:3004/transparecia')
-        setChartData(response.data);
         return response.data;
+    }, {
+        staleTime: 1000 * 60, // 1 minute
     });
-    if(!isLoading){ // if the data is loaded...
-        chartsData.usuarios_por_curso.map(item => { // here we create the array to use in the charts
+    if(isSuccess){ // if the data is loaded...
+        data.usuarios_por_curso.map(item => { // here we create the array to use in the charts
             chartUsersCourses.push([item.curso, item.usuarios]);
         })
     }
