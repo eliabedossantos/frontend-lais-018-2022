@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Loading } from "../../components/Loading";
 import { Chart } from "react-google-charts";
 import { useState } from "react";
+import BrazilGraphic  from "../../lib/BrazilGraphic";
 
 
 // assets
@@ -14,11 +15,11 @@ import { CapIcon } from "../../components/Svgs/CapIcon";
 import { CertificateIcon } from "../../components/Svgs/CertificateIcon";
 import { CapMoneyIcon } from "../../components/Svgs/CapMoneyIcon";
 import { PeopleMoneyIcon } from "../../components/Svgs/PeopleMoneyIcon";
-import brazilMap from "../../assets/img/brazilMap.png";
+
 import { DotIcon } from "../../components/Svgs/DotIcon";
 import { PeopleIcon } from "../../components/Svgs/PeopleIcon";
 import { SubscriptionsIcon } from "../../components/Svgs/SubscriptionsIcon";
-import { BrazilGraphic } from "../../lib/BrazilGraphic";
+
 const DataContainer = styled.div`
     width: 100%;
     max-width: 100%;
@@ -162,22 +163,16 @@ export function Transparency(){
                             <BrazilGraphic />
                         </div>
                         <div>
-                            <span className="d-flex mb-2 align-items-center gap-2">
-                                <DotIcon dotColor="white" />
-                                <strong>Curso de prevenção ao suicídio: 43.412</strong> 
-                            </span>
-                            <span className="d-flex mb-2 align-items-center gap-2">
-                                <DotIcon dotColor="#7DC143" />
-                                <strong>A covid-19 e seus sintomas: 120.000</strong> 
-                            </span>
-                            <span className="d-flex mb-2 align-items-center gap-2">
-                                <DotIcon dotColor="#D16FFF" />
-                                <strong>Pai presente: Cuidado e Compromisso: 105.301</strong> 
-                            </span>
-                            <span className="d-flex mb-2 align-items-center gap-2">
-                                <DotIcon dotColor="#2F2E41" />
-                                <strong>Outros: 1.669.402</strong> 
-                            </span>
+                        {
+                            data?.usuarios_por_curso.map((item, index) => {
+                                return(
+                                    <span className="d-flex mb-2 align-items-center gap-2" key={index}>
+                                        <DotIcon dotColor={chartColors[index]} />
+                                        <strong>{item.curso} : {numberFormat.format(item.usuarios)}</strong> 
+                                    </span>
+                                );
+                            })
+                        }
                         </div>
                     </DataContainer>
                 </Col>

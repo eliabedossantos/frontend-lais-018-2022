@@ -1,29 +1,34 @@
 import axios from "axios";
-import { useState } from "react";
 import { useQuery } from "react-query";
 
+function BrazilGraphic() {
+  var totalUsers = 0; //receive total users from api
+  var sizeRects = []; //receive size of rects from function Calculate Size Rects
+  const {data, isLoading, isSuccess} = useQuery('transparency', async () => { // get data
+    const response = await axios.get('http://localhost:3004/transparecia')
+    return response.data;
+  },{
+    staleTime: 1000 * 60, // 1 minute
+  });
 
-export function BrazilGraphic() {
-  const [totalUsers, setTotalUsers] = useState(0);
-  // const {data, isLoading, isSuccess} = useQuery('transparency', async () => { // get data
-  //   const response = await axios.get('http://localhost:3004/transparecia')
-  //   return response.data;
-  // },{
-  //   staleTime: 1000 * 60, // 1 minute
-  // });
+  if (isSuccess) { // if data is success
+    totalUsers = 0;
+    data.usuarios_por_estado.map(item => { // get total users
+      totalUsers += item.usuarios_totais;
+    })
+  }
 
-  // if (isSuccess) {
-  //   data?.map(item => {
-  //     setTotalUsers(totalUsers += item.usuarios_por_estado.usuarios_totais);
-  //   })
-  //   console.log(totalUsers);
-  // }
+  function CalculateSizeRects(data){ // calculate size of rects
+    let sizes = []; // create array to receive sizes
+    data.map(item => {
+      sizes.push(parseInt(item.usuarios_totais / totalUsers * 2000)); //get total users value and divide by total users and multiply by 2000
+    })
+    return sizes;
+  }
   
-  // function CalculeSizeOfRectGrapphic(data) {
-  //   let size = 0;
-    
-  //   return size;
-  // }
+  if(isSuccess){
+    sizeRects = CalculateSizeRects(data.usuarios_por_estado); 
+  }
 
   return (
     <svg
@@ -142,212 +147,247 @@ export function BrazilGraphic() {
           clipRule="evenodd"
         ></path>
         <rect // Amazonas
-          width="20"
-          height="20"
+          width={sizeRects[3]} 
+          height={sizeRects[3]}
           x="284"
           y="296"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect // Roraima
-          width="20"
-          height="20"
+          width={sizeRects[22]}
+          height={sizeRects[22]}
           x="399"
           y="110"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Mato grosso
-          width="20"
-          height="20"
-          x="629"
-          y="587"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[10]}
+          height={sizeRects[10]}
+          x="550"
+          y="560"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Para
-          width="20"
-          height="20"
+          width={sizeRects[13]}
+          height={sizeRects[13]}
           x="689"
           y="289"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Amapa
-          width="20"
-          height="20"
-          x="709"
-          y="130"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[2]}
+          height={sizeRects[2]}
+          x="680"
+          y="100"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Maranhao
-          width="20"
-          height="20"
+          width={sizeRects[9]}
+          height={sizeRects[9]}
           x="930"
           y="332"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Piaui
-          width="20"
-          height="20"
+          width={sizeRects[17]}
+          height={sizeRects[17]}
           x="1025"
           y="408"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Ceara
-          width="20"
-          height="20"
-          x="1117"
-          y="336"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[5]}
+          height={sizeRects[5]}
+          x="1080"
+          y="300"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Rio Grande do Norte
-          width="20"
-          height="20"
+          width={sizeRects[19]}
+          height={sizeRects[19]}
           x="1210"
-          y="358"
-          fill="#2F2E41"
-          rx="10"
+          y="340"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect // Paraiba
-          width="20"
-          height="20"
-          x="1220"
-          y="408"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[14]}
+          height={sizeRects[14]}
+          x="1180"
+          y="360"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Pernambuco
-          width="20"
-          height="20"
+          width={sizeRects[16]}
+          height={sizeRects[16]}
           x="1159"
           y="446"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Alagoas
-          width="20"
-          height="20"
-          x="1220"
-          y="485"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[1]}
+          height={sizeRects[1]}
+          x="1180"
+          y="440"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Sergipe
-          width="20"
-          height="20"
+          width={sizeRects[25]}
+          height={sizeRects[25]}
           x="1185"
           y="524"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Bahia
-          width="20"
-          height="20"
+          width={sizeRects[4]}
+          height={sizeRects[4]}
           x="1032"
           y="567"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Tocantins
-          width="20"
-          height="20"
-          x="831"
-          y="512"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[26]}
+          height={sizeRects[26]}
+          x="780"
+          y="465"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
+        ></rect>
+         <rect //Distrito Federal
+          width={sizeRects[6]}
+          height={sizeRects[6]}
+          x="838"
+          y="670"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Goias
-          width="20"
-          height="20"
-          x="787"
-          y="691"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[8]}
+          height={sizeRects[8]}
+          x="750"
+          y="720"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Minas Gerais
-          width="20"
-          height="20"
+          width={sizeRects[12]}
+          height={sizeRects[12]}
           x="959"
           y="775"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Espirito Santo
-          width="20"
-          height="20"
-          x="1083"
-          y="815"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[7]}
+          height={sizeRects[7]}
+          x="1070"
+          y="760"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Rio de Janeiro
-          width="20"
-          height="20"
+          width={sizeRects[18]}
+          height={sizeRects[18]}
           x="1022"
           y="898"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect // São Paulo
-          width="20"
-          height="20"
-          x="816"
-          y="898"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[24]}
+          height={sizeRects[24]}
+          x="790"
+          y="870"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Paraná
-          width="20"
-          height="20"
-          x="734"
-          y="974"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[15]}
+          height={sizeRects[15]}
+          x="690"
+          y="940"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Mato Grosso do Sul
-          width="20"
-          height="20"
+          width={sizeRects[11]}
+          height={sizeRects[11]}
           x="623"
           y="835"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Rio Grande do Sul
-          width="20"
-          height="20"
+          width={sizeRects[20]}
+          height={sizeRects[20]}
           x="670"
           y="1125"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Santa Catarina
-          width="20"
-          height="20"
+          width={sizeRects[23]}
+          height={sizeRects[23]}
           x="768"
           y="1056"
-          fill="#2F2E41"
-          rx="10"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Rondonia
-          width="20"
-          height="20"
-          x="333"
-          y="523"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[21]}
+          height={sizeRects[21]}
+          x="300"
+          y="500"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
         <rect //Acre
-          width="20"
-          height="20"
-          x="110"
-          y="470"
-          fill="#2F2E41"
-          rx="10"
+          width={sizeRects[0]}
+          height={sizeRects[0]}
+          x="90"
+          y="430"
+          fill="#2E25D4"
+          rx="100"
+          ry="100"
         ></rect>
       </g>
       <defs>
@@ -387,3 +427,4 @@ export function BrazilGraphic() {
   );
 }
 
+export default BrazilGraphic;

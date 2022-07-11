@@ -72,3 +72,16 @@ body{
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;
   }
+  .page-item.active .page-link{
+  width: 53px;
+height: 15px;
+background: #D16FFF;
+border-radius: 5px;
+border: none;
+}
+.pagination-sm .page-link{
+    width: 16px;
+    height: 17px;
+    border-radius: 50px;
+    background: rgba(196, 196, 196, 0.75);
+}
